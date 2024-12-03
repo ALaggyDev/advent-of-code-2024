@@ -8,11 +8,9 @@ aoc_example = aoc.read_example(day)
 
 
 def is_safe(levels: list[int]):
-    if levels != sorted(levels) and levels != sorted(levels, reverse=True):
-        return False
-
+    inc = levels[0] < levels[1]
     for i in range(1, len(levels)):
-        if not 1 <= abs(levels[i] - levels[i - 1]) <= 3:
+        if (levels[i - 1] < levels[i]) != inc or not 1 <= abs(levels[i] - levels[i - 1]) <= 3:
             return False
 
     return True
