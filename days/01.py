@@ -35,8 +35,15 @@ def part_2(input: str):
 # ----------
 
 
-input = aoc_input
-# input = aoc_example
+use_example = False
+
+if use_example:
+    print(f"----- Day {day:02} ----- (Example Input)")
+    input = aoc_example
+else:
+    print(f"----- Day {day:02} ----- (Actual Input)")
+    input = aoc_input
+
 
 aoc.run(lambda: part_1(input), part=1)
 aoc.run(lambda: part_2(input), part=2)
