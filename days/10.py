@@ -9,7 +9,7 @@ aoc_example = aoc.read_example(day)
 
 
 def part_1_count(grid, x, y):
-    trails = set([(y, x)])
+    trails = set([(x, y)])
 
     for i in range(1, 10):
         new_trails = set()
@@ -19,7 +19,7 @@ def part_1_count(grid, x, y):
                          (trail[0], trail[1] - 1),
                          (trail[0], trail[1] + 1)]
             for pos in positions:
-                if 0 <= pos[0] < len(grid) and 0 <= pos[1] < len(grid[0]) and grid[pos[0]][pos[1]] == i:
+                if 0 <= pos[1] < len(grid) and 0 <= pos[0] < len(grid[0]) and grid[pos[1]][pos[0]] == i:
                     new_trails.add(pos)
 
         trails = new_trails
@@ -28,7 +28,7 @@ def part_1_count(grid, x, y):
 
 
 def part_2_count(grid, x, y):
-    trails = defaultdict(int, {(y, x): 1})
+    trails = defaultdict(int, {(x, y): 1})
 
     for i in range(1, 10):
         new_trails = defaultdict(int)
@@ -38,7 +38,7 @@ def part_2_count(grid, x, y):
                          (trail[0], trail[1] - 1),
                          (trail[0], trail[1] + 1)]
             for pos in positions:
-                if 0 <= pos[0] < len(grid) and 0 <= pos[1] < len(grid[0]) and grid[pos[0]][pos[1]] == i:
+                if 0 <= pos[1] < len(grid) and 0 <= pos[0] < len(grid[0]) and grid[pos[1]][pos[0]] == i:
                     new_trails[pos] += rating
 
         trails = new_trails

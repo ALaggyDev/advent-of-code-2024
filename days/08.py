@@ -29,7 +29,7 @@ def part_1(input: str):
         for (ant_1, ant_2) in itertools.permutations(antennas, 2):
             pos = (2 * ant_1[0] - ant_2[0], 2 * ant_1[1] - ant_2[1])
 
-            if 0 <= pos[0] < len(lines) and 0 <= pos[1] < len(lines[0]):
+            if 0 <= pos[1] < len(lines) and 0 <= pos[0] < len(lines[0]):
                 antinodes.add(pos)
 
     return len(antinodes)
@@ -59,7 +59,7 @@ def part_2(input: str):
                 pos = (i * (ant_1[0] - ant_2[0]) + ant_1[0],
                        i * (ant_1[1] - ant_2[1]) + ant_1[1])
 
-                if 0 <= pos[0] < len(lines) and 0 <= pos[1] < len(lines[0]):
+                if 0 <= pos[1] < len(lines) and 0 <= pos[0] < len(lines[0]):
                     antinodes.add(pos)
                 else:
                     break
