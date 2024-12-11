@@ -1,3 +1,4 @@
+from collections import defaultdict
 import itertools
 import aoc
 
@@ -11,7 +12,7 @@ aoc_example = aoc.read_example(day)
 def part_1(input: str):
     lines = input.splitlines()
 
-    antennas_freq: dict[str, list[tuple[int, int]]] = {}
+    antennas_freq: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
 
     # Find all antennas
     for (y, line) in enumerate(lines):
@@ -19,8 +20,6 @@ def part_1(input: str):
             if char == ".":
                 continue
 
-            if char not in antennas_freq:
-                antennas_freq[char] = []
             antennas_freq[char].append((x, y))
 
     antinodes = set()
@@ -39,7 +38,7 @@ def part_1(input: str):
 def part_2(input: str):
     lines = input.splitlines()
 
-    antennas_freq: dict[str, list[tuple[int, int]]] = {}
+    antennas_freq: defaultdict[str, list[tuple[int, int]]] = defaultdict(list)
 
     # Find all antennas
     for (y, line) in enumerate(lines):
@@ -47,8 +46,6 @@ def part_2(input: str):
             if char == ".":
                 continue
 
-            if char not in antennas_freq:
-                antennas_freq[char] = []
             antennas_freq[char].append((x, y))
 
     antinodes = set()

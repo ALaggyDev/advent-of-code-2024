@@ -1,3 +1,4 @@
+from collections import defaultdict
 import aoc
 
 day = 10
@@ -27,10 +28,10 @@ def part_1_count(grid, x, y):
 
 
 def part_2_count(grid, x, y):
-    trails = {(y, x): 1}
+    trails = defaultdict(int, {(y, x): 1})
 
     for i in range(1, 10):
-        new_trails = dict()
+        new_trails = defaultdict(int)
         for (trail, rating) in trails.items():
             positions = [(trail[0] - 1, trail[1]),
                          (trail[0] + 1, trail[1]),
@@ -38,7 +39,6 @@ def part_2_count(grid, x, y):
                          (trail[0], trail[1] + 1)]
             for pos in positions:
                 if 0 <= pos[0] < len(grid) and 0 <= pos[1] < len(grid[0]) and grid[pos[0]][pos[1]] == i:
-                    new_trails.setdefault(pos, 0)
                     new_trails[pos] += rating
 
         trails = new_trails

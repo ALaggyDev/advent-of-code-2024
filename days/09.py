@@ -1,4 +1,3 @@
-import itertools
 import aoc
 
 day = 9
