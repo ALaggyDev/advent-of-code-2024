@@ -9,12 +9,12 @@ aoc_example = aoc.read_example(day)
 
 
 def pathfinding(grid):
-    distances = [[None] * dim for _ in range(dim)]
-    distances[0][0] = 0
+    visited = [[False] * dim for _ in range(dim)]
+    visited[0][0] = True
 
     queue = [(0, 0)]
 
-    for step in itertools.count():
+    for step in itertools.count(1):
         new_queue = []
         for pos in queue:
             # Get all neighbours
@@ -30,16 +30,16 @@ def pathfinding(grid):
 
             for neighbour in neighbours:
                 # Not yet visited
-                if distances[neighbour[1]][neighbour[0]] == None:
-                    distances[neighbour[1]][neighbour[0]] = step + 1
+                if not visited[neighbour[1]][neighbour[0]]:
+                    visited[neighbour[1]][neighbour[0]] = True
                     new_queue.append(neighbour)
 
         queue = new_queue
 
-        if distances[dim-1][dim-1] != None or not queue:
-            break
-
-    return distances[dim-1][dim-1]
+        if visited[dim-1][dim-1]:
+            return step
+        if not queue:
+            return
 
 
 def part_1(input: str):
